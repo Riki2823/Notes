@@ -8,6 +8,7 @@ import Root from "./routes/Root";
 
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./routes/ErrorPage";
+import Menu from "./routes/Menu";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path:"/test",
         element: <Test />
       },
+      {
+        path: "/menu",
+        element: <Menu />
+      }
     ]
   },
 ]);
