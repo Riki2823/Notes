@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        paht: "/signup",
+        path: "/signup",
         element: <SignUp />
       }
     ]
