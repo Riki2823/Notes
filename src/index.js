@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./routes/Login";
-import Test from "./routes/Test";
-import './index.css';
-import Root from "./routes/Root";
 
-import reportWebVitals from './reportWebVitals';
+
+import Login from "./routes/Login";
+import Home from "./routes/Home";
+import Root from "./routes/Root";
+import SignUp from "./routes/SignUp";
 import ErrorPage from "./routes/ErrorPage";
-import Menu from "./routes/Menu";
+
+
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {
@@ -21,12 +24,12 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path:"/test",
-        element: <Test />
+        path:"/home",
+        element: <Home />
       },
       {
-        path: "/menu",
-        element: <Menu />
+        paht: "/signup",
+        element: <SignUp />
       }
     ]
   },
