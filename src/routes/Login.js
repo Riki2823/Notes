@@ -28,8 +28,8 @@ export default function Login(){
             const token = result.token;
             console.log(token);
             localStorage.setItem("token", token);
-            
-            window.location.replace("/menu");
+            alert("Login correcto");
+            window.location.replace("/home");
         }
     }
     
