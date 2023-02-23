@@ -8,7 +8,7 @@ import Home from "./routes/Home";
 import Root from "./routes/Root";
 import SignUp from "./routes/SignUp";
 import ErrorPage from "./routes/ErrorPage";
-
+import Settings from "./routes/Settings"
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />
+      },
+      {
+        path: "/settings",
+        element: <Settings />
       }
     ]
   },
