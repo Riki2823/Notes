@@ -13,7 +13,7 @@ export default function Settings(){
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
-                    "Autoritation" : "Bearer " + localStorage.getItem("token")
+                    "Authorization" : "Bearer " + localStorage.getItem("token")
                 },
                 body : JSON.stringify({
                     "oldPassword" : passwdA,
@@ -23,6 +23,8 @@ export default function Settings(){
 
             if(response.status === 200){
                 alert("La contraseña se ha cambiado correctamente!");
+            }else{
+                alert("Ha ocurrido un error y la contraseña no ha podido ser cambiada");
             }
         };
 

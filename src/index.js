@@ -9,6 +9,7 @@ import Root from "./routes/Root";
 import SignUp from "./routes/SignUp";
 import ErrorPage from "./routes/ErrorPage";
 import Settings from "./routes/Settings"
+import CreateNote from "./routes/CreateNote"
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <Settings />
+      },
+      {
+        path: "/createNote",
+        element: <CreateNote />
       }
     ]
   },
