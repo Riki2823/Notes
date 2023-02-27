@@ -3,14 +3,14 @@ import {useState} from "react";
 export default function CreateNote(){
     const [title, setTitle] = useState("");
     const [bodyC, setBodyC] = useState("");
+    const [isPrivate, setIsPrivtate] = useState(true);
 
     if(localStorage.getItem("token") == null){
         window.location.replace("/");
     } else{
-    
-        const fetchCreateNote = async (e) => {
-            e.preventDefault();
-            const response = await fetch("http://localhost:8081/note", {
+        
+        const fetchCreateNote = async () => {
+            const response = await fetch("http://localhost:8081/notes", {
                 method: "POST",
                 headers: {
                     "content-type": "application/json",
@@ -18,35 +18,50 @@ export default function CreateNote(){
                 },
                 body: JSON.stringify({
                     "title" : title,
-                    "body" : bodyC
-                })
+                    "body" : bodyC,
+                    "isPublic" : isPrivate,
+                    "isVoiceNote" : false
+                }),
             })
+
+            if(response.status === 200){
+                alert("Nota Creada");
+            }
         }
         const checkInputs = (e) => {
-            if(title.length() <= 3 ){
+            e.preventDefault();
+            if(title.length <= 3 ){
                 alert("El titulo debe de contener mas de 3 caracteres");
             }else{
-                fetchCreateNote(e);
+                fetchCreateNote();
             }
+        }
+        const changeChecked = () => {
+            setIsPrivtate(document.getElementById("private").checked);
+            console.log(isPrivate);
         }
 
         return(
             <div>
                 <h1>Crear una nueva nota</h1>
 
-                <form onSubmit={checkInputs} id="createNoteForm">
+                <form>
                     <label>Titulo: </label>
                     <input type="text" id="title" onChange={ (v) => {
                         setTitle(v.target.value);
                     }}></input>
                     <label>Publico: </label>
-                    <input type="checkbox"></input>
+                    <input type="checkbox" id="private" onChange={changeChecked}></input>
+                    <input type="submit" value="Guardar Nota" onClick={checkInputs}></input>
                 </form>
 
                 <textarea rows="7" cols="50" forum="createNoteForm" placeholder="Introduce el contenido de tu nota aqui..." onChange={(v) => {
                     setBodyC(v.target.value);
                 }}></textarea>
-            </div>
+
+
+                {isPrivate}
+                </div>
         )
     
     }
