@@ -44,24 +44,32 @@ export default function SignUp(){
             }
         }
         return(
-            <div>
+            <div class="loginSingupContainer">
                 <form onSubmit={checkPasswd}>
                     <label>Usuario:</label>
+                    <br/>
+                    <br/>
                     <input type="text" id="username" placeholder="Introduce un nombre de usuario" onChange={ (input) => {
                         setUsername(input.target.value.toLowerCase());
                     }}></input>
+                    <br/>
+                    <br/>
                     <label>Contraseña:</label>
+                    <br/>
+                    <br/>
                     <input type="password" id="password1" placeholder="Introduce una contraseña" onChange={(input) =>{
                         setPasswd1(input.target.value);
                     }}></input>
+                    <br/>
+                    <br/>
                     <input type="password" id="password2" placeholder="Vuelve a introducir la contraseña anterior" onChange={(input) => {
                             setPasswd2(input.target.value);
                     }}></input>
+                    <br/>
+                    <br/>
                     <input type="submit" value="Registrarse"></input>
+                    <button onClick={goLogin}>Log In</button>
                 </form>
-    
-                <button onClick={goLogin}>Log In</button>
-    
             </div>
         )
     }

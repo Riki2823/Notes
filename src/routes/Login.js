@@ -39,20 +39,29 @@ export default function Login(){
             window.location.replace("/signup");
         }
         return(
-            <div id="loginContainer">
+            <div class="loginSingupContainer">
                 <form onSubmit={fetchLogin}>
                     <label>Usuario:</label>
+                    <br/>
+                    <br/>
                     <input type="text" id="username" placeholder="Introduce el nombre de usuario" onChange={(v) => {
                         setUsername(v.target.value.toLowerCase());
                     }}></input>
+                    <br/>
+                    <br/>
                     <label>Contraseña:</label>
+                    <br/>
+                    <br/>
                     <input type="password" id="passwd" placeholder="Introduce tu contraseña" onChange={(v) => {
                         setPasswd(v.target.value.toLowerCase());
                     }}></input>
+                    <br/>
+                    <br/>
                     <input type="submit" value="Login"></input>
+                    <button onClick={goSignUp}>Sign Up</button>
                 </form>
     
-                <button onClick={goSignUp}>Sign Up</button>
+                
             </div>
         );
     }
