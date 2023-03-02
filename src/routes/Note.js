@@ -13,7 +13,7 @@ export default function Item({ id, userId, createdAt, modifiedAt, title, body, i
 
     const deleteNote = async (idNote, e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:8081/notes/${id}", {
+        const response = await fetch("http://localhost:8081/notes/${idNote}", {
             method: "DELETE",
             headers: {
                 "Authorization" : "Bearer " + localStorage.getItem("token")
