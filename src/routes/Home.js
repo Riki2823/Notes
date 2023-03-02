@@ -4,19 +4,26 @@ import Note from "./Note";
 
 
 export default function Home(){
+    
     const [notes, setNotes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
     const token = localStorage.getItem("token");    
+
+    const actualDate = new Date();
+    const expirationDate = new Date(localStorage.getItem("expiration"));
     
-    
+    if(token == null  || expirationDate.getTime() < actualDate.getTime()){
+        window.location.replace("/");
+    }
+
     const goCreateNote = () =>{
         window.location.replace("/createNote");
     }
+
     
     useEffect(() => {
-        if(token == null){
-            window.location.replace("/");
-        } 
+  
         let ignore = false;
         const loadNotes = async() =>{
             setIsLoading(true);
@@ -41,16 +48,20 @@ export default function Home(){
     return(
         <div>
             <Nav/>
-            <button onClick={goCreateNote}>Crear una nueva nota: </button>
-            <h1>
-                TestHome
-            </h1>
-            <section>
-                {notes.map(Note)}
+            <section id="homeContainer">
+                <h1 id="titleNotes">
+                    Lista de notas: 
+                </h1>
+                <button onClick={goCreateNote}>Crear una nueva nota. </button>
+
+               
+                    {notes.map(Note)}
+                
+                {
+                    isLoading && <p>Loading...</p>
+                }
             </section>
-            {
-                isLoading && <p>Loading...</p>
-            }
+            
         </div>
     )
 }

@@ -6,8 +6,11 @@ export default function SignUp(){
     const [passwd1, setPasswd1] = useState("");
     const [passwd2, setPasswd2] = useState("");
 
-    if(localStorage.getItem("token") != null){
-        window.location.replace("/home");
+    const actualDate = new Date();
+    const expirationDate = new Date(localStorage.getItem("expiration"));
+
+    if(localStorage.getItem("token") != null && expirationDate.getTime() > actualDate.getTime()){
+        window.location.replace("/home"); 
     }else{
         const fetchSignUp = async (e) => {
             e.preventDefault();
@@ -50,7 +53,7 @@ export default function SignUp(){
                     <br/>
                     <br/>
                     <input type="text" id="username" placeholder="Introduce un nombre de usuario" onChange={ (input) => {
-                        setUsername(input.target.value.toLowerCase());
+                        setUsername(input.target.value.toLowerCase().trim());
                     }}></input>
                     <br/>
                     <br/>
@@ -58,12 +61,12 @@ export default function SignUp(){
                     <br/>
                     <br/>
                     <input type="password" id="password1" placeholder="Introduce una contraseña" onChange={(input) =>{
-                        setPasswd1(input.target.value);
+                        setPasswd1(input.target.value.trim());
                     }}></input>
                     <br/>
                     <br/>
                     <input type="password" id="password2" placeholder="Vuelve a introducir la contraseña anterior" onChange={(input) => {
-                            setPasswd2(input.target.value);
+                            setPasswd2(input.target.value.trim());
                     }}></input>
                     <br/>
                     <br/>

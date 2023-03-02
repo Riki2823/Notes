@@ -64,3 +64,40 @@ input[type=submit]:hover, button:hover{
   flex-direction: row;
   align-items: center;
 }
+
+nav{
+  background-color: white;
+  margin: 5%;
+  padding: 2%;
+  margin-top: 2%;
+  border-radius:  7px;
+  display: flex;
+  justify-content:space-around;
+}
+
+nav a{
+  transition: 0.5s;
+  text-decoration: none;
+  background-color: #353535;
+  color: white;
+  padding: 1%;
+  border-radius: 5px;
+}
+
+nav a:hover{
+  background-color: white;
+  color: #353535;
+}
+
+.note{
+  border-style: outset;
+  padding: 1%;
+  width: 50%;
+}
+
+#homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}

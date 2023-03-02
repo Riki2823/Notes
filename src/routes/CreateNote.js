@@ -5,7 +5,10 @@ export default function CreateNote(){
     const [bodyC, setBodyC] = useState("");
     const [isPrivate, setIsPrivtate] = useState(true);
 
-    if(localStorage.getItem("token") == null){
+    const actualDate = new Date();
+    const expirationDate = new Date(localStorage.getItem("expiration"));
+
+    if(localStorage.getItem("token") == null  || expirationDate.getTime() < actualDate.getTime()){
         window.location.replace("/");
     } else{
         
@@ -24,8 +27,9 @@ export default function CreateNote(){
                 }),
             })
 
-            if(response.status === 200){
+            if(response.status === 201){
                 alert("Nota Creada");
+                window.location.replace("/home");
             }
         }
         const checkInputs = (e) => {

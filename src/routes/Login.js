@@ -4,8 +4,12 @@ export default function Login(){
     const [username, setUsername] = useState("");
     const [passwd, setPasswd] = useState("");
     
-    if(localStorage.getItem("token") != null){
-        window.location.replace("/home");
+    const actualDate = new Date();
+    const expirationDate = new Date(localStorage.getItem("expiration"));
+
+    if(localStorage.getItem("token") != null && expirationDate.getTime() > actualDate.getTime()){
+        
+        window.location.replace("/home"); 
     } else{
         const fetchLogin = async (e) => {
             e.preventDefault();
@@ -29,6 +33,9 @@ export default function Login(){
                 console.log(result);
                 const token = result.token;
                 console.log(token);
+                const expiration = result.expiration;
+                console.log(expiration);
+                localStorage.setItem("expiration", expiration);
                 localStorage.setItem("token", token);
                 alert("Login correcto");
                 window.location.replace("/home");
@@ -45,16 +52,16 @@ export default function Login(){
                     <br/>
                     <br/>
                     <input type="text" id="username" placeholder="Introduce el nombre de usuario" onChange={(v) => {
-                        setUsername(v.target.value.toLowerCase());
-                    }}></input>
+                        setUsername(v.target.value.toLowerCase().trim());
+                    }} required></input>
                     <br/>
                     <br/>
                     <label>Contraseña:</label>
                     <br/>
                     <br/>
                     <input type="password" id="passwd" placeholder="Introduce tu contraseña" onChange={(v) => {
-                        setPasswd(v.target.value.toLowerCase());
-                    }}></input>
+                        setPasswd(v.target.value.toLowerCase().trim());
+                    }} required></input>
                     <br/>
                     <br/>
                     <input type="submit" value="Login"></input>
