@@ -11,25 +11,29 @@ export default function Item({ id, userId, createdAt, modifiedAt, title, body, i
         return day + "/" + month + "/" + year;
     }
 
-    const deleteNote = async (idNote, e) => {
-        e.preventDefault();
-        const response = await fetch("http://localhost:8081/notes/${idNote}", {
+    const deleteNote = async () => {
+        const response = await fetch(`http://localhost:8081/notes/${id}`, {
             method: "DELETE",
             headers: {
                 "Authorization" : "Bearer " + localStorage.getItem("token")
             }
         });
 
-        if(response.status === 200){
-            
+        if(response.status === 204){
+            window.location.reload();
         }
     }
+
+    const goUpdateNote = () => {
+        window.location.replace(`/edit/${id}`);
+    }
     return (
-        <article key={id} class="note">
+        <article key={id} className="note">
             <h1>{title}</h1>
             <p>{body}</p>
             <h2>{createdAt}</h2>
-            <button onClick={deleteNote(id)}>Eliminar nota</button>
+            <button onClick={deleteNote}>Eliminar nota</button>
+            <button onClick={goUpdateNote}>Editar Nota</button>
         </article>
     );
   }

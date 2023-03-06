@@ -8,8 +8,9 @@ import Home from "./routes/Home";
 import Root from "./routes/Root";
 import SignUp from "./routes/SignUp";
 import ErrorPage from "./routes/ErrorPage";
-import Settings from "./routes/Settings"
-import CreateNote from "./routes/CreateNote"
+import Settings from "./routes/Settings";
+import CreateNote from "./routes/CreateNote";
+import Editor from "./routes/Editor";
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/createNote",
         element: <CreateNote />
+      },
+      {
+        path: "/edit/:noteId",
+        element: <Editor />
       }
     ]
   },
