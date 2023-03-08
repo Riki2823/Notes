@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import Nav from "./Nav";
 export default function CreateNote(){
     const [title, setTitle] = useState("");
     const [bodyC, setBodyC] = useState("");
@@ -47,21 +47,25 @@ export default function CreateNote(){
 
         return(
             <div>
-                <h1>Crear una nueva nota</h1>
 
-                <form>
+                <Nav></Nav>
+                <h1 class="formT">Crear una nueva nota</h1>
+
+                <form class="formCustom">
                     <label>Titulo: </label>
                     <input type="text" id="title" onChange={ (v) => {
                         setTitle(v.target.value);
                     }}></input>
+                    <textarea rows="7" cols="50" forum="createNoteForm" placeholder="Introduce el contenido de tu nota aqui..." onChange={(v) => {
+                        setBodyC(v.target.value);
+                    }}></textarea>
                     <label>Publico: </label>
                     <input type="checkbox" id="private" onChange={changeChecked}></input>
                     <input type="submit" value="Guardar Nota" onClick={checkInputs}></input>
+                    
                 </form>
 
-                <textarea rows="7" cols="50" forum="createNoteForm" placeholder="Introduce el contenido de tu nota aqui..." onChange={(v) => {
-                    setBodyC(v.target.value);
-                }}></textarea>
+
 
 
                 {isPrivate}

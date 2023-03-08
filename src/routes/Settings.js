@@ -44,10 +44,10 @@ export default function Settings(){
         return(
             <div>
                 <Nav/>
+                
+                <h1 class="formT">Cambio de contraseña</h1>
 
-                <h1>Cambio de contraseña</h1>
-
-                <form onSubmit={checkPasswd}>
+                <form onSubmit={checkPasswd} class="formCustom">
                     <label>Contraseña actual:</label>
                     <input type="password" id="passwdA" onChange={(v) => {
                         setPasswdA(v.target.value.trim());

@@ -101,3 +101,57 @@ nav a:hover{
   gap: 25px;
   align-items: center;
 }
+
+.formCustom {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 2%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 7px;
+}
+
+.formCustom label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #27272C;
+}
+
+.formCustom input[type="password"], input[type="text"], textarea{
+  background-color: #27272C;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.formCustom input[type="submit"] {
+  background-color: #27272C;
+  color: white;
+  border: none;
+  padding: 2%;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: 0.5s;
+
+}
+
+
+.formCustom input[type="submit"]:hover {
+  background-color: white;
+  color: #27272C;
+}
+
+.formT{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+
+.formCustom input[type="checkbox"] {
+  width: 20%;
+  margin-bottom: 2%;
+}
