@@ -3,7 +3,7 @@ import Nav from "./Nav";
 export default function CreateNote(){
     const [title, setTitle] = useState("");
     const [bodyC, setBodyC] = useState("");
-    const [isPrivate, setIsPrivtate] = useState(true);
+    const [isPrivate, setIsPrivtate] = useState(false);
 
     const actualDate = new Date();
     const expirationDate = new Date(localStorage.getItem("expiration"));
@@ -42,6 +42,7 @@ export default function CreateNote(){
         }
         const changeChecked = () => {
             setIsPrivtate(document.getElementById("private").checked);
+            console.log(document.getElementById("private").checked)
             console.log(isPrivate);
         }
 
@@ -56,6 +57,7 @@ export default function CreateNote(){
                     <input type="text" id="title" onChange={ (v) => {
                         setTitle(v.target.value);
                     }}></input>
+                    <label>Contenido:</label>
                     <textarea rows="7" cols="50" forum="createNoteForm" placeholder="Introduce el contenido de tu nota aqui..." onChange={(v) => {
                         setBodyC(v.target.value);
                     }}></textarea>

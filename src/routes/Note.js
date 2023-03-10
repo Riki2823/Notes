@@ -31,7 +31,8 @@ export default function Item({ id, userId, createdAt, modifiedAt, title, body, i
         <article key={id} className="note">
             <h1>{title}</h1>
             <p>{body}</p>
-            <h2>{createdAt}</h2>
+            <h2>Fecha de creacion: {createdAt}</h2>
+            <h2>Fecha de ultima modificacion {modifiedAt}</h2>
             <button onClick={deleteNote}>Eliminar nota</button>
             <button onClick={goUpdateNote}>Editar Nota</button>
         </article>

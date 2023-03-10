@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { register } from './serviceWorkerRegistration';
 
 
 import Login from "./routes/Login";
@@ -14,7 +15,7 @@ import Editor from "./routes/Editor";
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
+register();
 const router = createBrowserRouter([
   {
     path: "/",

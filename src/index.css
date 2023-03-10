@@ -155,3 +155,9 @@ nav a:hover{
   width: 20%;
   margin-bottom: 2%;
 }
+
+#contentEdit{
+  color: #27272C;
+  font-family: 'Roboto Mono', monospace;
+
+}
